@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="kyohei_binance_api_config_settings_form">
+            <field name="name">res.config.settings.view.form.inherit.kyohei.binance.api</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <app data-string="Kyohei Binance Api" string="Binance" name="kyohei_binance_api">
+                        <block title="API" id="discuss">
+                            <setting string="Credentials">
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label for="binance_secret" string="Secret" class="col-lg-3"/>
+                                        <field name="binance_secret"/>
+                                    </div>
+                                    <div class="row mt16">
+                                        <label for="binance_apikey" string="Apikey" class="col-lg-3"/>
+                                        <field name="binance_apikey"/>
+                                    </div>
+                                </div>
+                            </setting>
+                        </block>
+                    </app>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
