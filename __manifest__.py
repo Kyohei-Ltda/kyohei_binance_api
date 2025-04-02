@@ -20,6 +20,8 @@ Después de instalar el módulo obtendrá:
         # 'security/ir.model.access.csv',
         'data/cron_data.xml',
         'settings/settings_view.xml',
-    ]
+    ],
+    'post_init_hook': '_kyohei_binance_api_post_init',
+    'uninstall_hook': '_kyohei_binance_api_uninstall',
 }
 
