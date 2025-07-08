@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="res.currency" id="usdt">
+        <field name="name">UST</field>
+        <field name="full_name">USD Tether</field>
+        <field name="active" eval="True"/>
+        <field name="currency_unit_label">USDTs</field>
+        <field name="symbol">Usdt</field>
+    </record>
+
+</odoo>

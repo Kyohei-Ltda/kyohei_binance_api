@@ -3,13 +3,13 @@
 from odoo import models, fields, api, exceptions
 from binance.client import Client
 
-CURRENCIES = ['USDT', 'BTC', 'ETH']
+CURRENCIES = ['UST', 'BTC', 'ETH']
 
 
 class KyoheiBinanceApi(models.Model):
     _inherit = 'res.currency'
 
-    def _create_binance_client(self, url):
+    def _create_binance_client(self):
         secret = self.env['ir.config_parameter'].sudo().get_param("kyohei_binance_api.binance_secret")
         apikey = self.env['ir.config_parameter'].sudo().get_param("kyohei_binance_api.binance_apikey")
         return Client(apikey, secret)
@@ -41,5 +41,9 @@ class KyoheiBinanceApi(models.Model):
         if bolivian_companies:
             rate_date = date if date else fields.Date.context_today(self)
             updating_currencies = self.search([['name', 'in', CURRENCIES]])
+            client = self._create_binance_client()
             for currency in updating_currencies:
-                date_dict = {'date': rate_date.strftime('%d-%m-%Y')}
+                symbol = f"BOB{currency.symbol}"
+                tickers = client.get_ticker(symbol=symbol)
+                pass
+                # date_dict = {'date': rate_date.strftime('%d-%m-%Y')}
